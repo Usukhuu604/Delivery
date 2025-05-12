@@ -1,0 +1,15 @@
+create folder in desktop --> yarn create next-app client
+yarn init -y
+
+
+    # server
+yarn add express cors mongoose bcryptjs jsonwebtoken nodemon nodemailer
+
+typescript ts-node 
+@
+
+
+yarn add -D typescript ts-node
+yarn tsc --init
+
+yarn add -D @types/express
