@@ -5,15 +5,9 @@ yarn init -y
     # server
 yarn add express cors mongoose bcryptjs jsonwebtoken nodemon nodemailer
 
-typescript ts-node 
-@
-
-
 yarn add -D typescript ts-node
 yarn tsc --init
-
 yarn add -D @types/express
-
 
 
 
@@ -25,7 +19,7 @@ tsegtei yavah architecuture => mvc architecuture
 
 
 in server -> .env
-DB_CONNECTION_STRING=mongodb+srv://usukhbayart6:kOBW6xInF3jVDpQQ@cluster0.zmigy0s.mongodb.net/
+.env filiig ajilluulahiin tuld --> yarn add dotenv
 
 
 rm -rf .git
