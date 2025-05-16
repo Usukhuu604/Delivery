@@ -1,20 +1,31 @@
 create folder in desktop --> yarn create next-app client
 yarn init -y
 
-rm -rf .git
 
     # server
 yarn add express cors mongoose bcryptjs jsonwebtoken nodemon nodemailer
+
+typescript ts-node 
+@
+
+
 yarn add -D typescript ts-node
 yarn tsc --init
+
 yarn add -D @types/express
+
+
+
 
 mongodb --> 
 usukhbayart6 = kOBW6xInF3jVDpQQ
 
 
+tsegtei yavah architecuture => mvc architecuture
+
+
 in server -> .env
-.env filiig ajilluulahiin tuld --> yarn add dotenv
+DB_CONNECTION_STRING=mongodb+srv://usukhbayart6:kOBW6xInF3jVDpQQ@cluster0.zmigy0s.mongodb.net/
 
 
-DB_CONNECTION_STRING=mongodb+srv://usukhbayart6:kOBW6xInF3jVDpQQ@cluster0.zmigy0s.mongodb.net/ + <Food-Delivery>
+rm -rf .git

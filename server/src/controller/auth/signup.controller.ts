@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserModel } from "../../models/user.model";
+import { encryptHash } from "../../utils";
 
 type UserBody = {
   email: string;
@@ -14,11 +15,17 @@ export const signupController = async (req: Request, res: Response) => {
     return;
   }
 
-  // const existingUser = await UserModel.findOne({ email });
+  const existingUser = await UserModel.findOne({ email });
+
+  if (existingUser) {
+    res.status(400).send({ message: "User exists" });
+  }
+
+  const hashedPassword = encryptHash(password);
 
   await UserModel.create({
     email,
-    password,
+    password: hashedPassword,
   });
 
   res.status(201).send({ message: "Success" });
