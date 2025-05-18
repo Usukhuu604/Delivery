@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserModel } from "../../models/user.model";
-import { encryptHash } from "../../utils";
+import { encryptHash, sendVerificationLink } from "../../utils";
 
 type UserBody = {
   email: string;
@@ -27,6 +27,8 @@ export const signupController = async (req: Request, res: Response) => {
     email,
     password: hashedPassword,
   });
+
+  await sendVerificationLink(`${req.protocol}://${req.get("host")}`, email);
 
   res.status(201).send({ message: "Success" });
 };
