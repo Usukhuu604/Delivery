@@ -1,2 +1,3 @@
-export * from "./signup.controller";
-// export * from "verify.controller";
+export * from "./sign-up.controller";
+export * from "./sign-in.controller";
+export * from "./verify-user.controller";

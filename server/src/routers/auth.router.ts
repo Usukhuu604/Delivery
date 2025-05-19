@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { signupController } from "../controller/auth/signup.controller";
-// import { verifyUserController } from "../controller/auth/verify.controller";
+
+import { verifyUserController, signupController, signIn } from "../controller/auth";
 
 export const authRouter = Router();
 
+authRouter.post("/sign-in", signIn);
 authRouter.post("/sign-up", signupController);
-// authRouter.get("verify-user", verifyUserController);
+authRouter.get("/verify-user", verifyUserController);
+authRouter.patch;

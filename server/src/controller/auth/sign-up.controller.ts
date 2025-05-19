@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserModel } from "../../models/user.model";
-import { encryptHash, sendVerificationLink } from "../../utils";
+import { encryptHash, sendVerificationLink, genereateNewToken } from "../../utils";
 
 type UserBody = {
   email: string;
@@ -23,12 +23,14 @@ export const signupController = async (req: Request, res: Response) => {
 
   const hashedPassword = encryptHash(password);
 
-  await UserModel.create({
+  const { _id } = await UserModel.create({
     email,
     password: hashedPassword,
   });
 
+  const token = genereateNewToken({ userId: _id });
+
   await sendVerificationLink(`${req.protocol}://${req.get("host")}`, email);
 
-  res.status(201).send({ message: "Success" });
+  res.status(201).send({ message: "Success", token });
 };
