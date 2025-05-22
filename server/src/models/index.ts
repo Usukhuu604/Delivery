@@ -1,3 +1,4 @@
+export * from "./Food.model";
+export * from "./FoodCategory.model";
+export * from "./FoodOrder.model";
 export * from "./user.model";
-export * from "./food-category.model";
-export * from "./food-order.model";

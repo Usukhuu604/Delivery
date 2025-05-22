@@ -7,10 +7,16 @@ export const verifyUserController = async (req: Request, res: Response) => {
 
   const decodedToken = verifyToken(token) as { userId: string };
 
-  await UserModel.findByIdAndUpdate(decodedToken.userId, {
-    isVerified: true,
-    ttl: Date.now() + 10 * 365 * 24 * 60 * 60 * 1000,
-  });
+  console.log(decodedToken);
+
+  await UserModel.findByIdAndUpdate(
+    decodedToken.userId,
+    {
+      isVerified: true,
+      ttl: Date.now() + 10 * 365 * 24 * 60 * 60 * 1000,
+    },
+    { new: true }
+  );
 
   res.redirect(`${process.env.FRONTEND_ENDPOINT}/login`);
 };
