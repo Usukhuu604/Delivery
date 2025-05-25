@@ -15,11 +15,11 @@ const transport = createTransport({
 
 export const sendVerificationLink = async (baseURL: string, email: string) => {
   await transport.sendMail({
-    subject: "title",
+    subject: "Verify your email address",
     from: USER_EMAIL,
     to: email,
     html: `
-      <h1>Welcome to our service</h1>
-      <p>Click the link below to verify your email address: ${baseURL}/api/v1/auth/verify/${email}</p>`,
+      <h1>Welcome to our service.</h1>
+      <p>Click the link below to verify your email address: ${baseURL}</p>`,
   });
 };

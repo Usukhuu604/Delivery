@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { authenticateUser, authorization } from "../middlewares";
+// import { authenticateUser, authorization } from "../middlewares";
 // import { createFoodCategory } from "../controller";
 
 export const foodCategoryRouter = Router();

@@ -14,8 +14,6 @@ type UserSchemaType = {
   orderedFoods: Schema.Types.ObjectId[];
   ttl: Date;
   isVerified: boolean;
-  createdAt: Date;
-  updatedAt: Date;
 };
 
 const UserSchema = new Schema<UserSchemaType>(
@@ -28,8 +26,6 @@ const UserSchema = new Schema<UserSchemaType>(
     phoneNumber: { type: String, unique: true, trim: true, default: "" },
     role: { type: String, enum: Object.values(UserRoleEnum), default: UserRoleEnum.USER },
     ttl: { type: Date, default: () => Date.now() + 24 * 60 * 60 * 1000 },
-    createdAt: { type: Date, immutable: true, default: () => Date.now() },
-    updatedAt: { type: Date, default: () => Date.now() },
   },
   { timestamps: true }
 );

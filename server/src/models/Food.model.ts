@@ -6,8 +6,6 @@ type FoodType = {
   image: string;
   ingredients: string;
   category: Schema.Types.ObjectId;
-  createdAt: Date;
-  updatedAt: Date;
 };
 
 const FoodSchema = new Schema<FoodType>(
@@ -21,4 +19,4 @@ const FoodSchema = new Schema<FoodType>(
   { timestamps: true }
 );
 
-export const FoodModel: Model<FoodType> = models.Food || model("Food", FoodSchema);
+export const FoodModel: Model<FoodType> = models["Food"] || model("Food", FoodSchema);

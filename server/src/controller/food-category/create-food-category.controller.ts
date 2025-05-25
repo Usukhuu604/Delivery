@@ -12,8 +12,6 @@ export const createFoodCategory = async (req: Request, res: Response) => {
       newFoodCategory,
     });
   } catch (error) {
-    console.error("Error creating food category:", error);
-
     res.status(500).json({
       message: "Error occurred while creating the food category",
       error: error instanceof Error ? error.message : "Unknown error",

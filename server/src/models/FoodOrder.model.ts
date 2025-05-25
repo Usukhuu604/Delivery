@@ -16,14 +16,17 @@ type FoodOrderType = {
   totalPrice: number;
   foodOrderItems: FoodOrderItem[];
   status: FoodOrderStatusEnum;
-  createdAt: Date;
-  updatedAt: Date;
 };
 
-const FoodOrderItemSchema = new Schema<FoodOrderItem>({
-  food: { type: Schema.Types.ObjectId, ref: "Food", required: true },
-  quantity: { type: Number, required: true, min: 1 },
-});
+const FoodOrderItemSchema = new Schema<FoodOrderItem>(
+  {
+    food: { type: Schema.Types.ObjectId, ref: "Food", required: true },
+    quantity: { type: Number, required: true },
+  },
+  {
+    _id: false,
+  }
+);
 
 const FoodOrderSchema = new Schema<FoodOrderType>(
   {
@@ -35,4 +38,4 @@ const FoodOrderSchema = new Schema<FoodOrderType>(
   { timestamps: true }
 );
 
-export const FoodOrderModel: Model<FoodOrderType> = models.FoodOrder || model("FoodOrder", FoodOrderSchema);
+export const FoodOrderModel: Model<FoodOrderType> = models["FoodOrder"] || model("FoodOrder", FoodOrderSchema);

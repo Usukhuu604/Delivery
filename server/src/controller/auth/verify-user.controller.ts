@@ -7,8 +7,6 @@ export const verifyUserController = async (req: Request, res: Response) => {
 
   const decodedToken = verifyToken(token) as { userId: string };
 
-  console.log(decodedToken);
-
   await UserModel.findByIdAndUpdate(
     decodedToken.userId,
     {

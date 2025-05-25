@@ -3,13 +3,14 @@ import { Request, Response } from "express";
 import { decryptHash, genereateNewToken } from "../../utils";
 
 export const signIn = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
   try {
     const { password, email } = req.body;
-
     const user = await UserModel.findOne({ email }).select("+password");
 
     if (!user) {
-      res.status(401).json({ message: "No user found with this email." });
+      res.status(401).json({ message: "Incorrect email or password" });
       return;
     }
 

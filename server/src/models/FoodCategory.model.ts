@@ -2,8 +2,6 @@ import { Schema, model, models, Model } from "mongoose";
 
 type FoodCategoryType = {
   categoryName: string;
-  createdAt: Date;
-  updatedAt: Date;
 };
 
 const FoodCategorySchema = new Schema<FoodCategoryType>(
@@ -14,4 +12,4 @@ const FoodCategorySchema = new Schema<FoodCategoryType>(
 );
 
 export const FoodCategoryModel: Model<FoodCategoryType> =
-  models.FoodCategory || model("FoodCategory", FoodCategorySchema);
+  models["FoodCategory"] || model("FoodCategory", FoodCategorySchema);
