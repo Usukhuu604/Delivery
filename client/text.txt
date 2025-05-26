@@ -5,9 +5,6 @@ yarn init -y
     # server
 yarn add express cors mongoose bcryptjs jsonwebtoken nodemon nodemailer
 
-typescript ts-node 
-@
-
 
 yarn add -D typescript ts-node
 yarn tsc --init
@@ -29,3 +26,8 @@ DB_CONNECTION_STRING=mongodb+srv://usukhbayart6:kOBW6xInF3jVDpQQ@cluster0.zmigy0
 
 
 rm -rf .git
+
+DB_CONNECTION_STRING=mongodb+srv://usukhbayart6:kOBW6xInF3jVDpQQ@cluster0.zmigy0s.mongodb.net/Food-Delivery
+USER_EMAIL=usukhbayart6@gmail.com
+USER_PASS=xlukclpztkylmnec
+FRONTEND_ENDPOINT=http://localhost:3000

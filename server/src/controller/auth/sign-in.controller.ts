@@ -1,6 +1,6 @@
 import { UserModel } from "../../models";
 import { Request, Response } from "express";
-import { decryptHash, genereateNewToken } from "../../utils";
+import { decryptHash, generateNewToken } from "../../utils";
 
 export const signIn = async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -21,7 +21,7 @@ export const signIn = async (req: Request, res: Response) => {
       return;
     }
 
-    const accessToken = genereateNewToken({ userId: user._id });
+    const accessToken = generateNewToken({ userId: user._id });
 
     res.status(200).json({ message: "Succesful", token: accessToken, user });
   } catch (error) {

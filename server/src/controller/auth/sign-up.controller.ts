@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserModel } from "../../models";
-import { encryptHash, sendVerificationLink, genereateNewToken } from "../../utils";
+import { encryptHash, sendVerificationLink, generateNewToken } from "../../utils";
 
 type UserBodyType = {
   email: string;
@@ -28,7 +28,7 @@ export const signupController = async (req: Request, res: Response) => {
     password: hashedPassword,
   });
 
-  const token = genereateNewToken({ userId: _id });
+  const token = generateNewToken({ userId: _id });
 
   await sendVerificationLink(`${req.protocol}://${req.get("host")}/auth/verify-user?token=${token}`, email);
 

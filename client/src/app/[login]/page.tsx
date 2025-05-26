@@ -1,7 +1,7 @@
 import React from "react";
 
 const Login = () => {
-  return <div>Successfully verified your email!</div>;
+  return <h1>Successfully verified your email!</h1>;
 };
 
 export default Login;
