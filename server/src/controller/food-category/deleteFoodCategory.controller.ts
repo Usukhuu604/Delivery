@@ -8,17 +8,17 @@ export const deleteFoodCategory = async (req: Request, res: Response) => {
     const deletedCategory = await FoodCategoryModel.findByIdAndDelete(foodCategoryId);
 
     if (!deletedCategory) {
-      res.status(404).json({
+      res.status(404).send({
         message: "Food category not found",
       });
       return;
     }
 
-    res.status(200).json({
+    res.status(200).send({
       message: "Food category deleted successfully",
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(500).send({
       message: "Error occurred while deleting food category",
       error: error instanceof Error ? error.message : "Unknown error",
     });

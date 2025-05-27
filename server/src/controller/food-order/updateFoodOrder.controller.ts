@@ -11,18 +11,18 @@ export const updateFoodOrderStatus = async (req: Request, res: Response) => {
       .populate("foodOrderItems.food");
 
     if (!updatedOrder) {
-      res.status(404).json({
+      res.status(404).send({
         message: "Food order not found",
       });
       return;
     }
 
-    res.status(200).json({
+    res.status(200).send({
       message: "Food order status updated successfully",
       order: updatedOrder,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(500).send({
       message: "Error occurred while updating food order status",
       error: error instanceof Error ? error.message : "Unknown error",
     });

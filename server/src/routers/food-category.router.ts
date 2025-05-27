@@ -5,14 +5,7 @@ import { authorization, authenticateUser } from "../middlewares";
 
 export const foodCategoryRouter = Router();
 
-// Get all food categories (public)
-foodCategoryRouter.get("/", getAllFoodCategories);
-
-// Create food category (admin only)
-foodCategoryRouter.post("/", authenticateUser, authorization(UserRoleEnum.ADMIN), createFoodCategory);
-
-// Update food category (admin only)
-foodCategoryRouter.patch("/:foodCategoryId", authenticateUser, authorization(UserRoleEnum.ADMIN), updateFoodCategory);
-
-// Delete food category (admin only)
-foodCategoryRouter.delete("/:foodCategoryId", authenticateUser, authorization(UserRoleEnum.ADMIN), deleteFoodCategory);
+foodCategoryRouter.get("/get-all-categories", getAllFoodCategories);
+foodCategoryRouter.post("/create-category", authenticateUser, authorization(UserRoleEnum.ADMIN), createFoodCategory);
+foodCategoryRouter.patch("/update-category/:foodCategoryId", authenticateUser, authorization(UserRoleEnum.ADMIN), updateFoodCategory);
+foodCategoryRouter.delete("/delete-category/:foodCategoryId", authenticateUser, authorization(UserRoleEnum.ADMIN), deleteFoodCategory);

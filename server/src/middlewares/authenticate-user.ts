@@ -8,6 +8,7 @@ export const authenticateUser = async (req: Request, res: Response, next: NextFu
   const authorization = req.headers.authorization;
 
   const token = authorization?.split(" ")[1];
+
   if (!authorization) {
     res.status(401).send({
       message: "Authorization header is missing",
@@ -22,6 +23,7 @@ export const authenticateUser = async (req: Request, res: Response, next: NextFu
   }
 
   const decodedToken = verifyToken(token) as { userId: string };
+
   if (!decodedToken || !decodedToken.userId) {
     res.status(400).send({
       message: "unauthorized user",
@@ -30,6 +32,7 @@ export const authenticateUser = async (req: Request, res: Response, next: NextFu
   }
 
   const existingUser = await UserModel.findById(decodedToken.userId);
+
   if (!existingUser) {
     res.status(404).send({
       message: "User not found",

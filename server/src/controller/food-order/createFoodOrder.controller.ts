@@ -32,12 +32,12 @@ export const createFoodOrder = async (req: Request, res: Response) => {
       $push: { orderedFoods: newOrder._id },
     });
 
-    res.status(201).json({
+    res.status(201).send({
       message: "Food order created successfully",
       order: newOrder,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(500).send({
       message: "Error occurred while creating food order",
       error: error instanceof Error ? error.message : "Unknown error",
     });

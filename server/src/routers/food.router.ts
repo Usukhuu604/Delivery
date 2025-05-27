@@ -7,7 +7,5 @@ export const foodRouter = Router();
 
 foodRouter.get("/:categoryId", getFoodsByCategory);
 foodRouter.get("/", getAllFoods);
-
-// admin only
 foodRouter.patch("/:foodId", authenticateUser, authorization(UserRoleEnum.ADMIN), updateFood);
 foodRouter.delete("/:foodId", authenticateUser, authorization(UserRoleEnum.ADMIN), deleteFood);

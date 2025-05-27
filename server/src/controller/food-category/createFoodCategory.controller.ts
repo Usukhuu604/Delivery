@@ -7,12 +7,12 @@ export const createFoodCategory = async (req: Request, res: Response) => {
 
     const newFoodCategory = await FoodCategoryModel.create(foodCategoryData);
 
-    res.status(201).json({
+    res.status(201).send({
       message: "Food category created successfully",
       newFoodCategory,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(500).send({
       message: "Error occurred while creating the food category",
       error: error instanceof Error ? error.message : "Unknown error",
     });
