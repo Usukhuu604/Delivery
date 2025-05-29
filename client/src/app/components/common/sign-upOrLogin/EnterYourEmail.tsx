@@ -5,10 +5,14 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { LetsGoButton } from "./LetsGoButton";
 
-export const EnterYourEmail = () => {
-  const [email, setEmail] = useState("");
+type Props = {
+  handleNextPage: () => void;
+  email: string;
+  setEmail: (email: string) => void;
+};
+
+export const EnterYourEmail = ({ handleNextPage, email, setEmail }: Props) => {
   const [isValid, setIsValid] = useState(true);
-  const [emailReady, setEmailReady] = useState("");
 
   const validateEmail = (email: string): boolean => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -16,21 +20,27 @@ export const EnterYourEmail = () => {
   };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const email = event.target.value;
-    if (validateEmail(email)) {
+    const newEmail = event.target.value;
+
+    if (validateEmail(newEmail)) {
       setIsValid(true);
-      setEmailReady(email);
     } else {
       setIsValid(false);
     }
-    setEmail(email);
+    setEmail(newEmail);
+  };
+
+  const handleLetsGo = () => {
+    if (email && isValid) {
+      handleNextPage();
+    }
   };
 
   return (
     <div>
       <Input type="email" required placeholder="Enter your email address" onChange={handleEmailChange} value={email} />
       {!isValid && <p className="text-red-500 text-sm absolute">Invalid email. Use a format like example@email.com</p>}
-      <LetsGoButton />
+      <LetsGoButton handleNextPage={handleLetsGo} />
     </div>
   );
 };

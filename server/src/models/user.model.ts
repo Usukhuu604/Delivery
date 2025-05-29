@@ -8,7 +8,6 @@ export enum UserRoleEnum {
 type UserSchemaType = {
   email: string;
   password: string;
-  phoneNumber: string;
   address: string;
   role: UserRoleEnum;
   orderedFoods: Schema.Types.ObjectId[];
@@ -23,7 +22,6 @@ const UserSchema = new Schema<UserSchemaType>(
     address: { type: String, default: "", trim: true },
     isVerified: { type: Boolean, default: false },
     orderedFoods: [{ type: Schema.Types.ObjectId, ref: "FoodOrder", required: true }],
-    phoneNumber: { type: String, unique: true, trim: true, default: "" },
     role: { type: String, enum: Object.values(UserRoleEnum), default: UserRoleEnum.USER },
     ttl: { type: Date, default: () => Date.now() + 24 * 60 * 60 * 1000 },
   },
