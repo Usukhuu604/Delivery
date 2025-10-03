@@ -1,30 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import { AlreadyHaveAnAccount } from "@/app/components/common/sign-upOrLogin/AlreadyHaveAnAccount";
-import { CreateNewPassword } from "@/app/components/common/sign-upOrLogin/CreateNewPassword";
-import { CreateYourAccountBanner } from "@/app/components/common/sign-upOrLogin/CreateYourAccountBanner";
-import { EnterYourEmail } from "@/app/components/common/sign-upOrLogin/EnterYourEmail";
+import { AlreadyHaveAnAccount } from "@/app/_components/common/sign-upOrLogin/AlreadyHaveAnAccount";
+import { CreateNewPassword } from "@/app/_components/common/sign-upOrLogin/CreateNewPassword";
+import { CreateYourAccountBanner } from "@/app/_components/common/sign-upOrLogin/CreateYourAccountBanner";
+import { EnterYourEmail } from "@/app/_components/common/sign-upOrLogin/EnterYourEmail";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 export const SignUpCart = () => {
   const [page, setPage] = useState(0);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const router = useRouter();
   const handleNextPage = async () => {
     if (page >= 1) {
       try {
-        const response = await axios.post("http://localhost:8000/auth/sign-up", 
+        console.log("trying to add");
+        const response = await axios.post(
+          "http://localhost:8000/auth/sign-up",
           {
-            'email': email,
-            'password': password,
-          },
+            email: email,
+            password: password,
+          }
         );
-        console.log('Signup successful:', response.data);
+        console.log("Signup successful:", response.data);
+        router.push("/");
         setPage(0);
-      } catch (error: any) {
-        console.error("Signup failed:", error.response?.data?.message || error.message);
+      } catch (error) {
+        console.log(error);
+        // console.error("Signup failed:", error.response?.data?.message || error.message);
       }
     } else {
       setPage((page) => page + 1);
@@ -34,11 +39,12 @@ export const SignUpCart = () => {
   const handlePreviousPage = () => {
     if (page <= 0) {
       setPage(0);
+      router.push("/");
     } else {
       setPage((page) => page - 1);
     }
   };
-  console.log(page);
+
   const Carts = [EnterYourEmail, CreateNewPassword][page] || EnterYourEmail;
 
   return (

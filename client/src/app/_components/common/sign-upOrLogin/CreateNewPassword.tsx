@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -12,7 +11,11 @@ type Props = {
   setPassword: (password: string) => void;
 };
 
-export const CreateNewPassword = ({ handleNextPage, password, setPassword }: Props) => {
+export const CreateNewPassword = ({
+  handleNextPage,
+  password,
+  setPassword,
+}: Props) => {
   const [checkboxPassword, setCheckPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -26,26 +29,37 @@ export const CreateNewPassword = ({ handleNextPage, password, setPassword }: Pro
     setPassword(event.target.value);
   };
 
-  const handleConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleConfirmPassword = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setConfirmPassword(event.target.value);
   };
 
   return (
     <div className="flex flex-col gap-6">
-      <Input type={showPassword} placeholder="Password" value={password} onChange={handleFirstPassword} />
+      <Input
+        type={showPassword}
+        placeholder="Password"
+        value={password}
+        onChange={handleFirstPassword}
+      />
       <Input
         type={showPassword}
         placeholder="Confirm Password"
         value={confirmPassword}
         onChange={handleConfirmPassword}
       />
-      {password != confirmPassword && <p className="text-red-500">Those password didn't match, try again</p>}
+      {password != confirmPassword && (
+        <p className="text-red-500">Those password didn't match, try again</p>
+      )}
       <div className="flex space-x-2 items-center">
         <Checkbox
           id="show"
           onClick={handleCheckbox}
           checked={checkboxPassword}
-          className={`text-white border border-black ${checkboxPassword ? "bg-black" : ""}`}
+          className={`text-white border border-black ${
+            checkboxPassword ? "bg-black" : ""
+          }`}
         />
         <label htmlFor="show">Show password</label>
       </div>

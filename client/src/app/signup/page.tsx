@@ -1,5 +1,4 @@
-import React from "react";
-import { DeliveryManImage } from "@/app/components/common/sign-upOrLogin/DeliveryManImage";
+import { DeliveryManImage } from "@/app/_components/common/sign-upOrLogin/DeliveryManImage";
 import { SignUpCart } from "./sign-up-cart/SignUpCart";
 
 const SignUpPage = () => {

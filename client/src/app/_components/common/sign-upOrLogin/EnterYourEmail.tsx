@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { LetsGoButton } from "./LetsGoButton";
@@ -38,8 +37,18 @@ export const EnterYourEmail = ({ handleNextPage, email, setEmail }: Props) => {
 
   return (
     <div>
-      <Input type="email" required placeholder="Enter your email address" onChange={handleEmailChange} value={email} />
-      {!isValid && <p className="text-red-500 text-sm absolute">Invalid email. Use a format like example@email.com</p>}
+      <Input
+        type="email"
+        required
+        placeholder="Enter your email address"
+        onChange={handleEmailChange}
+        value={email}
+      />
+      {!isValid && (
+        <p className="text-red-500 text-sm absolute">
+          Invalid email. Use a format like example@email.com
+        </p>
+      )}
       <LetsGoButton handleNextPage={handleLetsGo} />
     </div>
   );

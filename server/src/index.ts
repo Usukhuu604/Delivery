@@ -11,10 +11,12 @@ connectDatabase();
 
 const port = 8000;
 
-app.use(cors({
-  origin: process.env.FRONTEND_ENDPOINT || "http://localhost:3000",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: process.env.FRONTEND_ENDPOINT || "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.use("/auth", authRouter);

@@ -1,5 +1,3 @@
-import React from "react";
-
 export const DeliveryManImage = () => {
   return (
     <div className="h-full  ">

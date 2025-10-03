@@ -1,6 +1,6 @@
 import { sign, verify } from "jsonwebtoken";
 
-const SECRETKEY = "my_screen"; //
+const SECRETKEY = process.env.JWT_SECRET || "my_screen"; //
 
 export const generateNewToken = (payload: object) => {
   return sign(payload, SECRETKEY, { expiresIn: "1h" });
@@ -9,7 +9,6 @@ export const generateNewToken = (payload: object) => {
 export const verifyToken = (token: string) => {
   return verify(token, SECRETKEY);
 };
-
 
 // const token = generateNewToken({ userId: 123 });
 // console.log("Generated Token:", token);
