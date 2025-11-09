@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { AlreadyHaveAnAccount } from "@/app/_components/common/sign-upOrLogin/AlreadyHaveAnAccount";
-import { CreateNewPassword } from "@/app/_components/common/sign-upOrLogin/CreateNewPassword";
-import { CreateYourAccountBanner } from "@/app/_components/common/sign-upOrLogin/CreateYourAccountBanner";
-import { EnterYourEmail } from "@/app/_components/common/sign-upOrLogin/EnterYourEmail";
+import { AlreadyHaveAnAccount } from "@/app/(user)/_sign-upOrLogin-components/AlreadyHaveAnAccount";
+import { CreateNewPassword } from "@/app/(user)/_sign-upOrLogin-components/CreateNewPassword";
+import { CreateYourAccountBanner } from "@/app/(user)/_sign-upOrLogin-components/CreateYourAccountBanner";
+import { EnterYourEmail } from "@/app/(user)/_sign-upOrLogin-components/EnterYourEmail";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 

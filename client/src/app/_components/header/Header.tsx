@@ -1,7 +1,7 @@
 import React from "react";
 import { Logo } from "../common/Logo";
-import { SignUpLogin } from "./components/SignUpLogin";
-import { HeaderImage } from "./components/HeaderImage";
+import { SignUpLogin } from "./SignUpLogin";
+import { HeaderImage } from "./HeaderImage";
 
 const Header = () => {
   return (
@@ -10,7 +10,6 @@ const Header = () => {
         <Logo />
         <SignUpLogin />
       </div>
-
       <HeaderImage />
     </div>
   );
