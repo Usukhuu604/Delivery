@@ -1,35 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { CreateYourAccountBanner } from "@/app/(user)/_sign-upOrLogin-components/CreateYourAccountBanner";
 import { AlreadyHaveAnAccount } from "@/app/(user)/_sign-upOrLogin-components/AlreadyHaveAnAccount";
 import { CreateNewPassword } from "@/app/(user)/_sign-upOrLogin-components/CreateNewPassword";
-import { CreateYourAccountBanner } from "@/app/(user)/_sign-upOrLogin-components/CreateYourAccountBanner";
 import { EnterYourEmail } from "@/app/(user)/_sign-upOrLogin-components/EnterYourEmail";
-import { useRouter } from "next/navigation";
-import axios from "axios";
+import { axiosDeliveryInstance } from "@/lib/axios-delivery-instance";
 
 export const SignUpCart = () => {
   const [page, setPage] = useState(0);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+
   const handleNextPage = async () => {
     if (page >= 1) {
       try {
-        console.log("trying to add");
-        const response = await axios.post(
-          "http://localhost:8000/auth/sign-up",
-          {
-            email: email,
-            password: password,
-          }
-        );
+        const response = await axiosDeliveryInstance.post("/auth/sign-up", {
+          email: email,
+          password: password,
+        });
+
         console.log("Signup successful:", response.data);
         router.push("/");
         setPage(0);
       } catch (error) {
         console.log(error);
-        // console.error("Signup failed:", error.response?.data?.message || error.message);
+        throw new Error();
       }
     } else {
       setPage((page) => page + 1);

@@ -13,7 +13,7 @@ const Admin = () => {
       <AdminSideBar setPage={setPage} />
 
       <div className="bg-gray-200 w-full p-10">
-        <div className=" bg-white border border-gray-400 rounded-[8px] h-full">
+        <div className="  rounded-[8px] h-full">
           {page == "MENU" ? <MenuTab /> : <OrdersTab />}
         </div>
       </div>

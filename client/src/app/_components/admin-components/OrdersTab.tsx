@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 
 export const OrdersTab = () => {
   return (
-    <div>
+    <div className="border border-gray-400 rounded-[8px] h-full bg-white">
       <div className="flex justify-between border-b border-gray-400 p-4">
         <div>Orders</div>
 
