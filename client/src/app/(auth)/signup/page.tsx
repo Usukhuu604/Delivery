@@ -1,5 +1,5 @@
-import { DeliveryManImage } from "@/app/(user)/_sign-upOrLogin-components/DeliveryManImage";
-import { SignUpCart } from "./sign-up-cart/SignUpCart";
+import { DeliveryManImage } from "@/app/(auth)/_sign-upOrLogin-components/DeliveryManImage";
+import { SignUpCart } from "../_sign-upOrLogin-components/SignUpCart";
 
 const SignUpPage = () => {
   return (
