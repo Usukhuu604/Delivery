@@ -5,8 +5,8 @@
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
-    "start": "nodemon src/index.ts",
-    "dev": "ts-node src/index.ts"
+    "start": "nodemon src/server.ts",
+    "dev": "ts-node src/server.ts"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

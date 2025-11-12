@@ -3,10 +3,10 @@ import { Request, Response } from "express";
 import { decryptHash, generateNewToken } from "../../utils";
 
 export const signIn = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const { email, password } = await req.body;
 
   try {
-    const { password, email } = req.body;
+    // const { password, email } = req.body;
     const user = await UserModel.findOne({ email }).select("+password");
 
     if (!user) {
@@ -26,6 +26,7 @@ export const signIn = async (req: Request, res: Response) => {
     res.status(200).send({ message: "Succesful", token: accessToken, user });
   } catch (error) {
     console.error("Error during sing-in", error);
+
     res.status(500).send({
       message: "Interval server error",
       error: error instanceof Error ? error.message : "Unknown error",

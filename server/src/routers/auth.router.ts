@@ -1,5 +1,11 @@
 import { Router } from "express";
-import { verifyUserController, signupController, signIn, resetPasswordRequest, resetPassword } from "../controller/auth";
+import {
+  verifyUserController,
+  signupController,
+  signIn,
+  resetPasswordRequest,
+  resetPassword,
+} from "../controller/auth";
 
 export const authRouter = Router();
 

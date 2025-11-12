@@ -1,14 +1,18 @@
 import express from "express";
-import { connectDatabase } from "./database";
+import { connectDatabase } from "./db";
 import { configDotenv } from "dotenv";
-import { authRouter, foodCategoryRouter, foodRouter, foodOrderRouter } from "./routers";
+import {
+  authRouter,
+  foodCategoryRouter,
+  foodRouter,
+  foodOrderRouter,
+} from "./routers";
 import cors from "cors";
-
-const app = express();
 
 configDotenv();
 connectDatabase();
 
+const app = express();
 const port = 8000;
 
 app.use(
@@ -17,11 +21,12 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 app.use("/auth", authRouter);
-app.use("/food-category", foodCategoryRouter);
 app.use("/food", foodRouter);
 app.use("/food-order", foodOrderRouter);
+app.use("/food-category", foodCategoryRouter);
 
 app.listen(port, () => console.log(`http://localhost:${port}`));
