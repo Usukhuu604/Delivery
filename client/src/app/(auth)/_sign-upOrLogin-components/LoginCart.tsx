@@ -5,26 +5,21 @@ import { useRouter } from "next/navigation";
 import { LoginBanner } from "@/app/(auth)/_sign-upOrLogin-components/LoginBanner";
 import { DontHaveAccount } from "@/app/(auth)/_sign-upOrLogin-components/DontHaveAccount";
 import { LoginForm } from "@/app/(auth)/_sign-upOrLogin-components/LoginForm";
-import { axiosDeliveryInstance } from "@/lib/axios-delivery-instance";
+import { useUserContext } from "@/providers/UserProvider";
 
 export const LoginCart = () => {
   const router = useRouter();
+  const { userLoginHandler } = useUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
-      const response = await axiosDeliveryInstance.post("/auth/sign-in", {
-        email: email,
-        password: password,
-      });
-
-      console.log("Login successful:", response.data);
+      await userLoginHandler(email, password);
       router.push("/");
-      window.alert("Login successful!");
-    } catch (error) {
-      console.log(error);
-      window.alert("Login failed. Please check your credentials.");
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.message || "Login failed. Please check your credentials.";
+      window.alert(errorMessage);
     }
   };
 

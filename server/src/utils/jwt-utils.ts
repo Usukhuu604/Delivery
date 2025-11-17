@@ -1,6 +1,10 @@
 import { sign, verify } from "jsonwebtoken";
 
-const SECRETKEY = process.env.JWT_SECRET || "my_screen"; //
+const SECRETKEY = process.env.JWT_SECRET || "my_super_secret_jwt_key_2025";
+
+if (!SECRETKEY) {
+  throw new Error("JWT_SECRET environment variable is required!");
+}
 
 export const generateNewToken = (payload: object) => {
   return sign(payload, SECRETKEY, { expiresIn: "1h" });

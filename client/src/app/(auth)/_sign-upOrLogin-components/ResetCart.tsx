@@ -17,23 +17,18 @@ export const ResetCart = () => {
   const handleNextPage = async () => {
     if (page >= 1) {
       try {
-        const response = await axiosDeliveryInstance.post(
-          "/auth/reset-password",
-          {
-            email: email,
-            password: password,
-          }
-        );
+        const response = await axiosDeliveryInstance.post("/auth/reset-password", {
+          email: email,
+          password: password,
+        });
 
         console.log("Password reset successful:", response.data);
+        window.alert("Password reset successful! Please log in with your new password.");
         router.push("/login");
         setPage(0);
-        window.alert(
-          "Password reset successful! Please log in with your new password."
-        );
-      } catch (error) {
-        console.log(error);
-        window.alert("Password reset failed. Please try again.");
+      } catch (error: any) {
+        const errorMessage = error.response?.data?.message || "Password reset failed. Please try again.";
+        window.alert(errorMessage);
       }
     } else {
       setPage((page) => page + 1);

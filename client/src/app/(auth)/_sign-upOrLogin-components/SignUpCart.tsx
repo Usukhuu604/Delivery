@@ -23,12 +23,12 @@ export const SignUpCart = () => {
         });
 
         console.log("Signup successful:", response.data);
-        router.push("/");
+        window.alert("Signup successful! Please check your email to verify your account.");
+        router.push("/login");
         setPage(0);
-        window.alert("Signup successful!");
-      } catch (error) {
-        console.log(error);
-        throw new Error();
+      } catch (error: any) {
+        const errorMessage = error.response?.data?.message || "Signup failed. Please try again.";
+        window.alert(errorMessage);
       }
     } else {
       setPage((page) => page + 1);

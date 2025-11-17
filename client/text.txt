@@ -25,8 +25,6 @@ in server -> .env
 DB_CONNECTION_STRING=mongodb+srv://usukhbayart6:kOBW6xInF3jVDpQQ@cluster0.zmigy0s.mongodb.net/
 
 
-rm -rf .git
-
 DB_CONNECTION_STRING=mongodb+srv://usukhbayart6:kOBW6xInF3jVDpQQ@cluster0.zmigy0s.mongodb.net/Food-Delivery
 USER_EMAIL=usukhbayart6@gmail.com
 USER_PASS=xlukclpztkylmnec
